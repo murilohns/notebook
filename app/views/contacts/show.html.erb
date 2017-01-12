@@ -1,0 +1,35 @@
+<div class="basic-grey">
+  
+  <p id="notice"><%= notice %></p>
+  
+  <p>
+    <strong><%= t ('name') %>:</strong>
+    <%= @contact.nome %>
+  </p>
+  
+  <p>
+    <strong><%= t ('email') %>:</strong>
+    <%= @contact.email %>
+  </p>
+  
+  <p>
+    <strong><%= t ('tipo') %>:</strong>
+    <%= t @contact.type.description  %>
+  </p>
+  
+  <% @contact.phones.each do |contact| %>
+    <p>
+      <strong><%= t ('phone') %>:</strong>
+      <%= contact.telephone %>
+    </p>  
+  
+  <%end%>
+  
+  <p>
+    <strong><%= t ('observação') %>:</strong>
+    <%= @contact.rmk %>
+  </p>
+  
+  
+  <%= link_to 'Back', contacts_path, class: "button" %>
+</div>

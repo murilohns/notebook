@@ -1,0 +1,63 @@
+<%= form_for(@contact, html: {class: "basic-grey"}) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= "#{pluralize(@contact.errors.count, "erro")} #{t('messages.errors')}: " %> </h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1>Contacts</h1>
+  
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br> 
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :type_id %><br>
+    <%= f.collection_select(:type_id, @type_options_for_select, :id, :description) %>
+  </div>
+  
+  <%= f.fields_for :address do |address_fields| %>
+    
+    <%= address_fields.label :street %><br>
+    <%= address_fields.text_field :street%>
+    
+    <%= address_fields.label :city %><br>
+    <%= address_fields.text_field :city%>
+    
+    <%= address_fields.label :state %><br>
+    <%= address_fields.select :state, options_for_states(@contact.address.state) 
+    %>
+  
+  <% end %>
+  
+  <div id="phones">
+  
+  <%= f.fields_for :phones do |phones_fields| %>
+    <%= render partial: "phone_fields", locals: {f: phones_fields} %>
+  <% end %>
+    <div class="field">
+      <%= f.label :phones, '<span class="glyphicon glyphicon-plus"></span>'.html_safe %><br>
+      <%= link_to_add_association('[Adicionar Telefone]', f, :phones) %>
+    </div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :rmk %><br>
+    <%= f.text_area :rmk %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Enviar", class: "button" %>
+    <%= link_to t('messages.back'), contacts_path, class: "button" %>
+  </div>
+<% end %>

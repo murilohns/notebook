@@ -1,0 +1,29 @@
+<div class="basic-grey">
+  <p id="notice"><%= notice %></p>
+  
+  <h1><%= "#{t('messages.listing')} #{@types.model_name.human(count: @types.count) }" %></h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @types.each do |type| %>
+        <tr>
+          <td><%= link_to type.description, type %></td>
+          <td><%= link_to t('buttons.edit'), edit_type_path(type), class: "btn btn-info" %></td>
+          <td><%= link_to t('buttons.destroy'), type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  
+  <%= link_to t('buttons.new'), new_type_path, class:"button" %>
+  <%= link_to t('buttons.back'), home_index_path, class:"button"%>
+</div>

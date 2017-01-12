@@ -1,0 +1,41 @@
+"pt-BR":
+    name: "Nome"
+    email: "Email"
+    type: "Tipo de contato"
+    type_id: "Tipo de contato"
+    phone: "Telefone"
+    rmk: "Observação"
+    activerecord:
+        models:
+            contact:
+                one: "Contato"
+                other: "Contatos"
+            address:
+                one: "Endereço"
+                other: "Endereços"
+            type:
+                one: "Tipo"
+                other: "Tipos"
+            telephone:
+                one: "Telefone"
+                other: "Telefones"
+            phone:
+                one: "Telefone"
+                other: "Telefones"
+        attributes:
+            contact:
+                name: "Nome"
+                email: "Email"
+                type: "Tipo de contato"
+                type_id: "Tipo de contato"
+                rmk: "Observação"
+            address:
+                street: "Rua"
+                city: "Cidade"
+                state: "Estado"
+            type:
+                types: "Tipo"
+                description: "Descrição "
+            phone:
+                telephone: "Telefone"
+                contact: "Contato"
