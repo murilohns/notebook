@@ -6,10 +6,11 @@ namespace :utils do
   100.times do |i|
     Contact.create!(
         [
-            {nome: Faker::Name.name,
-             email: Faker::Internet.email,
-             type: Type.all.sample,
-             rmk: LeroleroGenerator.sentence([1,2,3,4,5].sample)
+            {
+              nome: Faker::Name.name,
+              email: Faker::Internet.email,
+              type: Type.all.sample,
+              rmk: LeroleroGenerator.sentence([1,2,3,4,5].sample)
             }
         ]
     )
